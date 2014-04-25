@@ -1,0 +1,11 @@
+{
+  "name": "jacobi-eigenvalue",
+  "version": "0.0.0",
+  "description": "jacobi eigenvalue algorithm for 3x3 matrix",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
