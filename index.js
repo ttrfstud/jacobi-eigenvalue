@@ -1,6 +1,12 @@
 var assert = require('assert');
 
-module.exports = function (m, t) {
+var copy = require('./fn/copy');
+var findangle = require('./fn/findangle');
+var findij = require('./fn/findij');
+var isapdiag = require('./fn/isapdiag');
+var rotate = require('./fn/rotate');
+
+function jae(m, t) {
   var dim;
 
   var b;
@@ -11,8 +17,8 @@ module.exports = function (m, t) {
 
   var eigenv;
 
-  assertdim(m);
-  assertsym(m);
+  assert(m);
+  assert(t !== void 0);
 
   dim = m.length;
 
@@ -22,12 +28,11 @@ module.exports = function (m, t) {
 
   b = copy(m);
 
-  while (!lookslikediag(b, t)) {
+  console.log(b);
+  while (!isapdiag(b, t)) {
     ij = findij(m);
-    console.log(ij);
-
     angle = findangle(b, ij);
-    b = rotate(b, dim, ij, angle);
+    b = rotate(b, ij, angle);
   }
 
   eigenv = [];
@@ -37,4 +42,6 @@ module.exports = function (m, t) {
   }
 
   return eigenv;
-};
+}
+
+module.exports = jae;
