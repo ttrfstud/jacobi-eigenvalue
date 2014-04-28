@@ -15,6 +15,11 @@ describe('findij finds position of largest element above main diagonal', functio
     done();
   });
 
+  it('2x2, 2', function (done) {
+    // TODO
+    done();
+  });
+
   it('4x4', function (done) {
     assert.deepEqual(findij([
       [1, 2, 4, 6],

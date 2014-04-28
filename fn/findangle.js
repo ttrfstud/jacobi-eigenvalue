@@ -15,7 +15,13 @@ function findangle(m, ij) {
   mji = m[ij.j][ij.i];
   mjj = m[ij.j][ij.j];
 
-  assert.equal(mji, mij);
+  console.log('ms', mji, mij);
+  if (mji !== mij) {
+    console.log('equal');
+    return 0;
+  } else {
+    console.log('not equal');
+  }
 
   sum = (mii + mjj) / 2;
   dif = (mii - mjj) / 2;

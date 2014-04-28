@@ -28,11 +28,17 @@ function jae(m, t) {
 
   b = copy(m);
 
-  console.log(b);
   while (!isapdiag(b, t)) {
-    ij = findij(m);
+    ij = findij(b);
+    console.log(ij);
     angle = findangle(b, ij);
+    if (!angle) {
+      break;
+    }
+    console.log(angle);
+    console.log('bifo', b)
     b = rotate(b, ij, angle);
+    console.log('afta', b);
   }
 
   eigenv = [];

@@ -26,6 +26,18 @@ describe('', function () {
     done();
   });
 
+  it('2x2, failover', function (done) {
+    var m = [
+      [1, .0000000000000000000000000000001],
+      [0, 4]
+    ];
+    var ij = {i: 0, j: 1};
+
+    assert.deepEqual(findangle(m, ij), 0);
+
+    done();
+  });
+
   it('5x5', function (done) {
     var m = [
       [1, 0, 0, 0, 0],
