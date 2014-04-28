@@ -16,9 +16,7 @@ function findij(m) {
 
   for (i = 0; i < dim; i++) {
     for (j = 0; j < i; j++) {
-      console.log('max', max, m[j][i]);
-      if (Math.abs(m[j][i]) > max) {
-        console.log('set max', max, m[j][i], j, i);
+      if (Math.abs(m[j][i]) > Math.abs(max)) {
         max = m[j][i];
         maxi = j;
         maxj = i;

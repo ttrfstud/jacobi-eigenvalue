@@ -16,7 +16,11 @@ describe('findij finds position of largest element above main diagonal', functio
   });
 
   it('2x2, 2', function (done) {
-    // TODO
+    assert.deepEqual(findij([
+      [1 ,-.1, 0],
+      [-.1, 1, 0],
+      [ 0,  0, 1]
+    ]), {i : 0, j : 1});
     done();
   });
 

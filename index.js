@@ -30,15 +30,11 @@ function jae(m, t) {
 
   while (!isapdiag(b, t)) {
     ij = findij(b);
-    console.log(ij);
     angle = findangle(b, ij);
     if (!angle) {
       break;
     }
-    console.log(angle);
-    console.log('bifo', b)
     b = rotate(b, ij, angle);
-    console.log('afta', b);
   }
 
   eigenv = [];
