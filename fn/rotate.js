@@ -1,5 +1,5 @@
 var mmult = require('mmult');
-var transpose = require('./transpose');
+var transpose = require('transpose');
 var ident = require('./ident');
 
 function rotate(b, ij, angle) {
