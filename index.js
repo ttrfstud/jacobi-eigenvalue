@@ -7,6 +7,10 @@ var isapdiag = require('./fn/isapdiag');
 var rotate = require('./fn/rotate');
 var ident = require('./fn/ident');
 var appendrot = require('./fn/appendrot');
+var pessimistf = require('./fn/pessimistf');
+var optimistf = require('./fn/optimistf');
+var repair = require('./fn/repair');
+var exact = require('./fn/exact');
 
 function jae(m, t) {
   var dim;
@@ -19,6 +23,8 @@ function jae(m, t) {
 
   var eigen;
 
+  var pfcast;
+
   assert(m);
   assert(t !== void 0);
 
@@ -28,17 +34,26 @@ function jae(m, t) {
     return m;
   }
 
+  if (dim === 2) {
+    return exact(m);
+  }
+
   b = copy(m);
   v = ident(dim);
 
-  while (!isapdiag(b, t)) {
+  pfcast = pessimistf(m, t);
+
+  while (pfcast-- > 0) {
     ij = findij(b);
     angle = findangle(b, ij);
-    if (!angle) {
-      break;
-    }
     b = rotate(b, ij, angle);
     v = appendrot(v, ij, angle);
+
+    b = repair(b);
+
+    if (optimistf(b, t)) {
+      break;
+    }
   }
 
   eigen = {
