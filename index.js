@@ -5,17 +5,19 @@ var findangle = require('./fn/findangle');
 var findij = require('./fn/findij');
 var isapdiag = require('./fn/isapdiag');
 var rotate = require('./fn/rotate');
+var ident = require('./fn/ident');
+var appendrot = require('./fn/appendrot');
 
 function jae(m, t) {
   var dim;
 
-  var b;
+  var b, v;
   var ij;
   var angle;
 
   var i, j;
 
-  var eigenv;
+  var eigen;
 
   assert(m);
   assert(t !== void 0);
@@ -27,6 +29,7 @@ function jae(m, t) {
   }
 
   b = copy(m);
+  v = ident(dim);
 
   while (!isapdiag(b, t)) {
     ij = findij(b);
@@ -35,15 +38,15 @@ function jae(m, t) {
       break;
     }
     b = rotate(b, ij, angle);
+    v = appendrot(v, ij, angle);
   }
 
-  eigenv = [];
+  eigen = {
+    vals: b,
+    vect: v
+  };
 
-  for (i = 0; i < dim; i++) {
-    eigenv[i] = b[i][i];
-  }
-
-  return eigenv;
+  return eigen;
 }
 
 module.exports = jae;

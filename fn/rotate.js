@@ -1,6 +1,7 @@
 var mmult = require('mmult');
 var transpose = require('transpose');
 var ident = require('./ident');
+var mkgivens = require('./mkgivens');
 
 function rotate(b, ij, angle) {
   var dim;
@@ -13,12 +14,7 @@ function rotate(b, ij, angle) {
     return b;
   }
 
-  givens = ident(dim);
-
-  givens[ij.i][ij.i] = angle.cos;
-  givens[ij.i][ij.j] = -angle.sin;
-  givens[ij.j][ij.j] = angle.cos;
-  givens[ij.j][ij.i] = angle.sin;
+  givens = mkgivens(dim, ij, angle);
 
   return mmult(mmult(transpose(givens), b), givens);
 }
