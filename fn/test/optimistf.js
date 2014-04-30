@@ -32,11 +32,11 @@ describe('optimistf', function () {
     var m;
 
     m = [
-      [2, 0.1],
-      [0.1, 1]
+      [2, 0.02],
+      [0.02, 1]
     ];
 
-    assert.equal(optimistf(m, 100), true);
+    assert.equal(optimistf(m, 0.1), true);
 
     done();
   });
@@ -45,11 +45,11 @@ describe('optimistf', function () {
     var m;
 
     m = [
-      [2, 0.1],
-      [0.1, 1]
+      [2, 0.03],
+      [0.02, 1]
     ];
 
-    assert.equal(optimistf(m, 100), true);
+    assert.equal(optimistf(m, 0.1), false);
 
     done();
   });

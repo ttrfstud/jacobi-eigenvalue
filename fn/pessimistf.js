@@ -12,7 +12,7 @@ function pessimistf(m, t) {
 
   dim = m.length;
   off = offd(m);
-  term = n * n - 2 * n;
+  term = dim * dim - dim;
 
   steps = (ln(off) + ln(dim - 1) - 2 * ln(t) + 2 * ln(2 * dim - 1)) /
   (ln(term) - ln(term - 2));
