@@ -42,8 +42,6 @@ function jae(m, t) {
 
   pfcast = pessimistf(m, t);
 
-  console.log(pfcast);
-
   while (pfcast-- > 0) {
     ij = findij(b);
     angle = findangle(b, ij);
