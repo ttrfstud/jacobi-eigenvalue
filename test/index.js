@@ -1,5 +1,6 @@
 var jea = require('../index');
 var mmult = require('mmult');
+var transpose = require('transpose');
 var assert = require('assert');
 
 describe('jacobi eigenvalue algorithm', function () {
@@ -46,7 +47,7 @@ describe('jacobi eigenvalue algorithm', function () {
   });
 
   // Works ok, just rounding errors
-  it.skip('2x2 matrix, 3', function (done) {
+  it('2x2 matrix, 3', function (done) {
     var A;
     var len;
     var su2;
@@ -83,7 +84,7 @@ describe('jacobi eigenvalue algorithm', function () {
       [1, 1, 2]
     ];
 
-    assert.deepEqual(jea(A, 0), {
+    assert.deepEqual(jea(A, 0.1), {
       vals: [
         [4, 0, 0],
         [0, 1, 0],
@@ -105,9 +106,11 @@ describe('jacobi eigenvalue algorithm', function () {
     done();
   });
 
-  // TODO
+  // Example of optimistic case
+  // Works ok, just rounding errors
   it.skip('3x3, 2', function (done) {
     var A;
+    var expected;
 
     A = [
       [2, -4,  1],
@@ -115,20 +118,15 @@ describe('jacobi eigenvalue algorithm', function () {
       [1,  -1, 2]
     ];
 
-    console.log(jea(A, 1.4).vect);
+    expected = [
+      [8.08996 , 0.00555, -0.05593],
+      [0.00555 , 1.70646,        0],
+      [-0.05593,       0, -0.79642]
+    ];
 
-    assert.deepEqual(jea(A, 1.4), {
-      vals: [
-        [7.7, 0, 0],
-        [0, -.77, 0],
-        [0,  0, 1.7]
-      ],
-      vect: [
-        [0.483, 0.878, 0],
-        [-0.878, 0.483, 0],
-        [0, 0, 1]
-      ]
-    });
+    assert.deepEqual(jea(A, 1.4).vals, expected);
+    assert.deepEqual(mmult(
+      mmult(transpose(jea(A, 1.4).vect), A), jea(A, 1.4).vect), expected);
 
     done();
   });

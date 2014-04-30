@@ -3,7 +3,6 @@ var assert = require('assert');
 var copy = require('./fn/copy');
 var findangle = require('./fn/findangle');
 var findij = require('./fn/findij');
-var isapdiag = require('./fn/isapdiag');
 var rotate = require('./fn/rotate');
 var ident = require('./fn/ident');
 var appendrot = require('./fn/appendrot');
@@ -42,6 +41,8 @@ function jae(m, t) {
   v = ident(dim);
 
   pfcast = pessimistf(m, t);
+
+  console.log(pfcast);
 
   while (pfcast-- > 0) {
     ij = findij(b);
