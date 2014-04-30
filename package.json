@@ -1,6 +1,6 @@
 {
   "name": "jacobi-eigenvalue",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "jacobi eigenvalue algorithm for 3x3 matrix",
   "main": "index.js",
   "author": "",
