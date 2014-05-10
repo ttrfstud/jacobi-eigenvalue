@@ -48,86 +48,86 @@ test(function (done) { /* 2x2 matrix, 2 */
 });
 
 // Works ok, just rounding errors
-// test(function (done) { /* 2x2 matrix, 3 */
-//   var A;
-//   var len;
-//   var su2;
+test.skip(function (done) { /* 2x2 matrix, 3 */
+  var A;
+  var len;
+  var su2;
 
-//   A = [
-//     [1, 2], 
-//     [2, 5]
-//   ];
+  A = [
+    [1, 2], 
+    [2, 5]
+  ];
 
-//   su2 = (-2 - 2 * Math.sqrt(2)) / 2;
-//   len = 1 + Math.pow(su2, 2);
-//   len = Math.sqrt(len);
+  su2 = (-2 - 2 * Math.sqrt(2)) / 2;
+  len = 1 + Math.pow(su2, 2);
+  len = Math.sqrt(len);
 
-//   assert.deepEqual(jea(A, 0), {
-//     vals: [
-//       [3 + 2 * Math.sqrt(2), 0],
-//       [0, 3 - 2 * Math.sqrt(2)]
-//     ],
-//     vect: [
-//       [1 / len,  su2 / len],
-//       [-su2 / len, 1 / len]
-//     ]});
+  assert.deepEqual(jea(A, 0), {
+    vals: [
+      [3 + 2 * Math.sqrt(2), 0],
+      [0, 3 - 2 * Math.sqrt(2)]
+    ],
+    vect: [
+      [1 / len,  su2 / len],
+      [-su2 / len, 1 / len]
+    ]});
 
-//   done();
-// });
+  done();
+});
 
 // Works ok, just rounding errors
-// test(function (done) { /* 3x3 */
-//   var A;
+test.skip(function (done) { /* 3x3 */
+  var A;
 
-//   A = [
-//     [2, 1, 1], 
-//     [1, 2, 1],
-//     [1, 1, 2]
-//   ];
+  A = [
+    [2, 1, 1], 
+    [1, 2, 1],
+    [1, 1, 2]
+  ];
 
-//   assert.deepEqual(jea(A, 0.1), {
-//     vals: [
-//       [4, 0, 0],
-//       [0, 1, 0],
-//       [0, 0, 1]
-//     ],
-//     vect: mmult(
-//       [
-//         [1 / Math.sqrt(2), - 1 / Math.sqrt(2), 0],
-//         [1 / Math.sqrt(2),   1 / Math.sqrt(2), 0],
-//         [               0,                  0, 1],
-//       ],
-//       [
-//         [Math.sqrt(2/3), 0, - Math.sqrt(1/3)],
-//         [             0, 1,                0],
-//         [Math.sqrt(1/3), 0,   Math.sqrt(2/3)],
-//       ]
-//     )}); // more fair way
+  assert.deepEqual(jea(A, 0.1), {
+    vals: [
+      [4, 0, 0],
+      [0, 1, 0],
+      [0, 0, 1]
+    ],
+    vect: mmult(
+      [
+        [1 / Math.sqrt(2), - 1 / Math.sqrt(2), 0],
+        [1 / Math.sqrt(2),   1 / Math.sqrt(2), 0],
+        [               0,                  0, 1],
+      ],
+      [
+        [Math.sqrt(2/3), 0, - Math.sqrt(1/3)],
+        [             0, 1,                0],
+        [Math.sqrt(1/3), 0,   Math.sqrt(2/3)],
+      ]
+    )}); // more fair way
 
-//   done();
-// });
+  done();
+});
 
 // Example of optimistic case
 // Works ok, just rounding errors
-// test(function (done) { /* 3x3, 2 */
-//   var A;
-//   var expected;
+test.skip(function (done) { /* 3x3, 2 */
+  var A;
+  var expected;
 
-//   A = [
-//     [2, -4,  1],
-//     [-4, 5, -1],
-//     [1,  -1, 2]
-//   ];
+  A = [
+    [2, -4,  1],
+    [-4, 5, -1],
+    [1,  -1, 2]
+  ];
 
-//   expected = [
-//     [8.08996 , 0.00555, -0.05593],
-//     [0.00555 , 1.70646,        0],
-//     [-0.05593,       0, -0.79642]
-//   ];
+  expected = [
+    [8.08996 , 0.00555, -0.05593],
+    [0.00555 , 1.70646,        0],
+    [-0.05593,       0, -0.79642]
+  ];
 
-//   assert.deepEqual(jea(A, 1.4).vals, expected);
-//   assert.deepEqual(mmult(
-//     mmult(transpose(jea(A, 1.4).vect), A), jea(A, 1.4).vect), expected);
+  assert.deepEqual(jea(A, 1.4).vals, expected);
+  assert.deepEqual(mmult(
+    mmult(transpose(jea(A, 1.4).vect), A), jea(A, 1.4).vect), expected);
 
-//   done();
-// });
+  done();
+});

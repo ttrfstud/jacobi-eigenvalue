@@ -3,12 +3,12 @@ var assert = require('assert');
 
 var findij = require('../findij');
 
-test('1x1', function (done) { /* 1x1 */
+test(function (done) { /* 1x1 */
   assert.equal(findij([[1]]), void 0);
   done();
 });
 
-test('2x2', function (done) { /* 2x2 */
+test(function (done) { /* 2x2 */
   assert.deepEqual(findij([
     [1, 2],
     [3, 4]
@@ -16,7 +16,7 @@ test('2x2', function (done) { /* 2x2 */
   done();
 });
 
-test('2x2, 2', function (done) { /* 2x2, 2 */
+test(function (done) { /* 2x2, 2 */
   assert.deepEqual(findij([
     [1 ,-.1, 0],
     [-.1, 1, 0],
@@ -25,7 +25,7 @@ test('2x2, 2', function (done) { /* 2x2, 2 */
   done();
 });
 
-test('4x4', function (done) { /* 4x4 */
+test(function (done) { /* 4x4 */
   assert.deepEqual(findij([
     [1, 2, 4, 6],
     [3, 4, 5, 1],

@@ -22,7 +22,7 @@ test(function (done) {
 });
 
 /* Works fine, but different float rounding */
-/*test(function (done) {
+test.skip(function (done) {
   assert.deepEqual(exact([
     [2, 3],
     [3, 1]
@@ -38,4 +38,4 @@ test(function (done) {
   });
 
   done();
-});*/
+});

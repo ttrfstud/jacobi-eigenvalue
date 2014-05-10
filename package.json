@@ -9,6 +9,6 @@
     "transpose": "0.0.0"
   },
   "devDependencies": {
-    "taptap": "0.0.1"
+    "taptap": "0.0.3"
   }
 }
