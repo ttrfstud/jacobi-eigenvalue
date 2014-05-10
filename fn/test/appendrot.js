@@ -1,48 +1,48 @@
-var appendrot = require('../appendrot');
+var test = require('taptap');
 var assert = require('assert');
 
-describe('appendrot', function () {
-  it('2x2', function (done) {
-    var m
-    var ij;
-    var angle;
+var appendrot = require('../appendrot');
 
-    m = [
-      [1, 0],
-      [0, 1]
-    ]; 
+test(function (done) { /* 2x2 */
+  var m
+  var ij;
+  var angle;
 
-    ij = {i: 0, j: 1};
+  m = [
+    [1, 0],
+    [0, 1]
+  ]; 
 
-    angle = { cos: 100, sin: -100 };
+  ij = {i: 0, j: 1};
 
-    assert.deepEqual(appendrot(m, ij, angle), [
-      [100,  100],
-      [-100, 100]
-    ]);
-    done();
-  });
+  angle = { cos: 100, sin: -100 };
 
-  it('3x3', function (done) {
-    var m
-    var ij;
-    var angle;
+  assert.deepEqual(appendrot(m, ij, angle), [
+    [100,  100],
+    [-100, 100]
+  ]);
+  done();
+});
 
-    m = [
-      [1, 0, 0],
-      [0, 1, 0],
-      [0, 0, 1]
-    ]; 
+test(function (done) { /* 3x3 */
+  var m
+  var ij;
+  var angle;
 
-    ij = {i: 0, j: 2};
+  m = [
+    [1, 0, 0],
+    [0, 1, 0],
+    [0, 0, 1]
+  ]; 
 
-    angle = { cos: 100, sin: -100 };
+  ij = {i: 0, j: 2};
 
-    assert.deepEqual(appendrot(m, ij, angle), [
-      [100,  0, 100],
-      [0  ,  1,   0],
-      [-100, 0, 100]
-    ]);
-    done();
-  });
+  angle = { cos: 100, sin: -100 };
+
+  assert.deepEqual(appendrot(m, ij, angle), [
+    [100,  0, 100],
+    [0  ,  1,   0],
+    [-100, 0, 100]
+  ]);
+  done();
 });

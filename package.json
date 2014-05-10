@@ -4,11 +4,11 @@
   "description": "jacobi eigenvalue algorithm for 3x3 matrix",
   "main": "index.js",
   "author": "",
-  "devDependencies": {
-    "mocha": "~1.18.2"
-  },
   "dependencies": {
     "mmult": "0.0.0",
     "transpose": "0.0.0"
+  },
+  "devDependencies": {
+    "taptap": "0.0.1"
   }
 }

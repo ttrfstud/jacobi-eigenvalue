@@ -1,56 +1,56 @@
-var optimistf = require('../optimistf');
+var test = require('taptap');
 var assert = require('assert');
 
-describe('optimistf', function () {
-  it('obvious false case', function (done) {
-    var m;
+var optimistf = require('../optimistf');
 
-    m = [
-      [2, 100],
-      [100, 1]
-    ];
+test(function (done) { /* obviously false */
+  var m;
 
-    assert.equal(optimistf(m, .1), false);
+  m = [
+    [2, 100],
+    [100, 1]
+  ];
 
-    done();
-  });
+  assert.equal(optimistf(m, .1), false);
 
-  it('obvious true case', function (done) {
-    var m;
+  done();
+});
 
-    m = [
-      [2, 0.1],
-      [0.1, 1]
-    ];
+test(function (done) { /* obviously true */
+  var m;
 
-    assert.equal(optimistf(m, 100), true);
+  m = [
+    [2, 0.1],
+    [0.1, 1]
+  ];
 
-    done();
-  });
+  assert.equal(optimistf(m, 100), true);
 
-  it('less obvious true case', function (done) {
-    var m;
+  done();
+});
 
-    m = [
-      [2, 0.02],
-      [0.02, 1]
-    ];
+test(function (done) { /* less obvious true case */
+  var m;
 
-    assert.equal(optimistf(m, 0.1), true);
+  m = [
+    [2, 0.02],
+    [0.02, 1]
+  ];
 
-    done();
-  });
+  assert.equal(optimistf(m, 0.1), true);
 
-  it('less obvious false case', function (done) {
-    var m;
+  done();
+});
 
-    m = [
-      [2, 0.03],
-      [0.02, 1]
-    ];
+test(function (done) { /* less obvious false case */
+  var m;
 
-    assert.equal(optimistf(m, 0.1), false);
+  m = [
+    [2, 0.03],
+    [0.02, 1]
+  ];
 
-    done();
-  });
+  assert.equal(optimistf(m, 0.1), false);
+
+  done();
 });
