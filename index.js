@@ -27,7 +27,7 @@ function jae(m, t) {
   assert(m);
   assert(t !== void 0);
 
-  dim = m.length;
+  dim = m.rows;
 
   if (dim === 1) {
     return m;

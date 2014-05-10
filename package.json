@@ -6,7 +6,8 @@
   "author": "",
   "dependencies": {
     "mmult": "0.0.0",
-    "transpose": "0.0.0"
+    "transpose": "0.0.0",
+    "float2dm": "0.0.1"
   },
   "devDependencies": {
     "taptap": "0.0.3"

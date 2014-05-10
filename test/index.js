@@ -2,47 +2,59 @@ var test = require('taptap');
 var assert = require('assert');
 
 var jea = require('../index');
+var fmatrix = require('float2dm');
 var mmult = require('mmult');
 var transpose = require('transpose');
 
 test(function (done) { /* 2x2 matrix */
   var A;
+  var res;
+  var vals;
+  var vect;
 
-  A = [
-    [3, 2], 
-    [2, 6]
-  ];
+  A = new fmatrix(2, 2);
 
-  assert.deepEqual(jea(A, 0), {
-    vals: [
-      [7, 0],
-      [0, 2]
-    ],
-    vect: [
-      [1 / Math.sqrt(5), -2 / Math.sqrt(5)],
-      [2 / Math.sqrt(5),  1 / Math.sqrt(5)]
-    ]});
+  A.set(0, 0, 3); A.set(0, 1, 2);
+  A.set(1, 0, 2); A.set(1, 1, 6);
+
+  res = jea(A, 0);
+  vals = res.vals;
+  vect = res.vect;
+
+  assert.equal(vals.get(0, 0), 7); assert.equal(vals.get(0, 1), 0);
+  assert.equal(vals.get(1, 0), 0); assert.equal(vals.get(1, 1), 2);
+
+  assert.equal(vect.get(0, 0), 1 / Math.sqrt(5));
+  assert.equal(vect.get(0, 1), -2 / Math.sqrt(5));
+  assert.equal(vect.get(1, 0), 2 / Math.sqrt(5));
+  assert.equal(vect.get(1, 1), 1 / Math.sqrt(5));
 
   done();
 });
 
 test(function (done) { /* 2x2 matrix, 2 */
   var A;
+  var res;
+  var vals;
+  var vect;
 
-  A = [
-    [1, 2], 
-    [2, 4]
-  ];
+  A = new fmatrix(2, 2);
 
-  assert.deepEqual(jea(A, 0), {
-    vals: [
-      [5, 0],
-      [0, 0]
-    ],
-    vect: [
-      [1 / Math.sqrt(5), -2 / Math.sqrt(5)],
-      [2 / Math.sqrt(5),  1 / Math.sqrt(5)]
-    ]});
+  A.set(0, 0, 1); A.set(0, 1, 2);
+  A.set(1, 0, 2); A.set(1, 1, 4);
+
+  res = jea(A, 0);
+
+  vals = res.vals;
+  vect = res.vect;
+
+  assert.equal(vals.get(0, 0), 5); assert.equal(vals.get(0, 1), 0);
+  assert.equal(vals.get(1, 0), 0); assert.equal(vals.get(1, 1), 0);
+
+  assert.equal(vect.get(0, 0), 1 / Math.sqrt(5));
+  assert.equal(vect.get(0, 1), -2 / Math.sqrt(5));
+  assert.equal(vect.get(1, 0), 2 / Math.sqrt(5));
+  assert.equal(vect.get(1, 1), 1 / Math.sqrt(5));
 
   done();
 });
@@ -52,25 +64,33 @@ test.skip(function (done) { /* 2x2 matrix, 3 */
   var A;
   var len;
   var su2;
+  var res;
+  var vals;
+  var vect;
 
-  A = [
-    [1, 2], 
-    [2, 5]
-  ];
+  A = new fmatrix(2, 2);
+
+  A.set(0, 0, 1); A.set(0, 1, 2);
+  A.set(1, 0, 2); A.set(1, 1, 5);
 
   su2 = (-2 - 2 * Math.sqrt(2)) / 2;
   len = 1 + Math.pow(su2, 2);
   len = Math.sqrt(len);
 
-  assert.deepEqual(jea(A, 0), {
-    vals: [
-      [3 + 2 * Math.sqrt(2), 0],
-      [0, 3 - 2 * Math.sqrt(2)]
-    ],
-    vect: [
-      [1 / len,  su2 / len],
-      [-su2 / len, 1 / len]
-    ]});
+  res = jea(A, 0);
+
+  vals = res.vals;
+  vect = res.vect;
+
+  assert.equal(vals.get(0, 0), 3 + 2 * Math.sqrt(2)); 
+  assert.equal(vals.get(0, 1), 0);
+  assert.equal(vals.get(1, 0), 0); 
+  assert.equal(vals.get(1, 1), 3 - 2 * Math.sqrt(2));
+
+  assert.equal(vect.get(0, 0), 1 / len);
+  assert.equal(vect.get(0, 1), su2 / len);
+  assert.equal(vect.get(1, 0), -su2 / len);
+  assert.equal(vect.get(1, 1), 1 / len);
 
   done();
 });
@@ -78,6 +98,14 @@ test.skip(function (done) { /* 2x2 matrix, 3 */
 // Works ok, just rounding errors
 test.skip(function (done) { /* 3x3 */
   var A;
+  var res;
+  var vals;
+  var vect;
+
+  A = new fmatrix(2, 2);
+
+  A.set(0, 0, 1); A.set(0, 1, 2);
+  A.set(1, 0, 2); A.set(1, 1, 5);
 
   A = [
     [2, 1, 1], 
