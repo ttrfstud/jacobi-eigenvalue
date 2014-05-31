@@ -1,12 +1,12 @@
 {
   "name": "jacobi-eigenvalue",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "jacobi eigenvalue algorithm for 3x3 matrix",
   "main": "index.js",
   "author": "",
   "dependencies": {
     "mmult": "0.0.0",
-    "transpose": "0.0.0",
+    "transpose": "0.0.2",
     "float2dm": "0.0.1"
   },
   "devDependencies": {
